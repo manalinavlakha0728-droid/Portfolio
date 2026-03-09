@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Manali Navlakha — Finance & FP&A</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,600&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg:#050505;--bg-alt:#0a0a0a;--bg-card:#111111;
+    --border:#1e1e1e;--border-hover:#2e2e2e;
+    --text:#ebebeb;--text-muted:#888888;--text-subtle:#555555;
+    --accent:#3ecf8e;--accent-light:#5ddba3;
+    --accent-bg:rgba(62,207,142,.07);--accent-border:rgba(62,207,142,.2);
+    --gold:#f0b429;--gold-bg:rgba(240,180,41,.07);--gold-border:rgba(240,180,41,.2);
+    --rose:#f87171;--rose-bg:rgba(248,113,113,.07);
+    --sky:#60a5fa;--sky-bg:rgba(96,165,250,.07);
+    --shadow-sm:0 1px 4px rgba(0,0,0,.3);--shadow-md:0 4px 20px rgba(0,0,0,.5);
+    --nav-bg:rgba(5,5,5,.85);
+  }
+  *{margin:0;padding:0;box-sizing:border-box}html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'DM Sans',-apple-system,sans-serif;line-height:1.7;font-size:15px;-webkit-font-smoothing:antialiased}
+  ::selection{background:var(--accent);color:#fff}
+  a{color:var(--accent);text-decoration:none;transition:color .2s}a:hover{color:var(--accent-light)}
+  .container{max-width:1060px;margin:0 auto;padding:0 2rem}
+
+  /* ---- NAV ---- */
+  nav{position:fixed;top:0;left:0;right:0;z-index:100;background:var(--nav-bg);backdrop-filter:blur(20px) saturate(180%);-webkit-backdrop-filter:blur(20px) saturate(180%);border-bottom:1px solid var(--border);transition:transform .4s}
+  .nav-inner{max-width:1060px;margin:0 auto;padding:0 2rem;height:62px;display:flex;align-items:center;justify-content:space-between}
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:600;color:var(--text);text-decoration:none;letter-spacing:-.01em}.nav-logo span{color:var(--accent)}
+  .nav-links{display:flex;align-items:center;gap:1.8rem;list-style:none}
+  .nav-links a{color:var(--text-muted);font-size:.82rem;font-weight:500;text-decoration:none;transition:color .2s;position:relative}
+  .nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1.5px;background:var(--accent);transition:width .25s}
+  .nav-links a:hover{color:var(--text)}.nav-links a:hover::after{width:100%}
+  .nav-toggle{display:none;background:none;border:none;color:var(--text);font-size:1.4rem;cursor:pointer}
+
+  /* ---- HERO ---- */
+  .hero{padding:9.5rem 0 4rem;position:relative;overflow:hidden}
+  .hero::before{content:'';position:absolute;top:-100px;right:-120px;width:500px;height:500px;background:radial-gradient(circle,rgba(62,207,142,.06) 0%,transparent 68%);border-radius:50%;pointer-events:none}
+  .hero::after{content:'';position:absolute;bottom:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--border),transparent)}
+  .hero-eyebrow{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);padding:.3rem 1rem;border-radius:100px;margin-bottom:1.4rem;opacity:0;animation:fadeUp .6s .1s forwards;letter-spacing:.03em}
+  .hero-eyebrow .dot{width:7px;height:7px;border-radius:50%;background:#3ecf8e;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.35}}
+  .hero-layout{display:grid;grid-template-columns:1fr auto;gap:3rem;align-items:start}
+  .hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,3.9rem);font-weight:500;line-height:1.1;letter-spacing:-.025em;margin-bottom:1.1rem;opacity:0;animation:fadeUp .6s .2s forwards}
+  .hero h1 em{font-style:italic;color:var(--accent)}
+  .hero-desc{font-size:1rem;color:var(--text-muted);max-width:580px;line-height:1.75;margin-bottom:.5rem;opacity:0;animation:fadeUp .6s .35s forwards}
+  .hero-seeking{font-size:.87rem;color:var(--gold);font-weight:500;margin-bottom:1.8rem;opacity:0;animation:fadeUp .6s .42s forwards;display:flex;align-items:center;gap:.4rem}
+  .hero-actions{display:flex;gap:.5rem;flex-wrap:wrap;opacity:0;animation:fadeUp .6s .5s forwards}
+  .btn{display:inline-flex;align-items:center;gap:.45rem;padding:.6rem 1.2rem;border-radius:7px;font-size:.83rem;font-weight:500;font-family:'DM Sans',sans-serif;text-decoration:none;transition:all .25s;cursor:pointer;border:none}
+  .btn-primary{background:var(--accent);color:#050505;box-shadow:0 2px 12px rgba(62,207,142,.2)}
+  .btn-primary:hover{background:var(--accent-light);color:#050505;transform:translateY(-1px)}
+  .btn-outline{background:transparent;color:var(--accent);border:1px solid var(--accent-border)}
+  .btn-outline:hover{background:var(--accent-bg);transform:translateY(-1px)}
+  .btn-secondary{background:var(--bg-card);color:var(--text);border:1px solid var(--border);box-shadow:var(--shadow-sm)}
+  .btn-secondary:hover{border-color:var(--border-hover);transform:translateY(-1px);color:var(--text)}
+  .btn svg{width:14px;height:14px}
+  .stats-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:.8rem;padding:2.5rem 0 0;opacity:0;animation:fadeUp .6s .6s forwards}
+  .stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem;text-align:center;transition:all .3s;box-shadow:var(--shadow-sm)}
+  .stat-card:hover{border-color:var(--accent-border);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .stat-card .number{font-family:'Cormorant Garamond',serif;font-size:1.8rem;font-weight:600;color:var(--accent);line-height:1.2}
+  .stat-card .label{font-size:.7rem;color:var(--text-muted);margin-top:.1rem;font-weight:500;letter-spacing:.02em}
+
+  /* ---- SECTIONS ---- */
+  section{padding:4rem 0}.section-alt{background:var(--bg-alt)}
+  .section-eyebrow{font-family:'DM Mono',monospace;font-size:.72rem;font-weight:500;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:.3rem}
+  .section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:500;letter-spacing:-.02em;margin-bottom:.35rem}
+  .section-title em{font-style:italic;color:var(--accent)}
+  .section-desc{font-size:.9rem;color:var(--text-muted);max-width:520px;margin-bottom:1.8rem}
+
+  /* ---- EXPERIENCE ---- */
+  .exp-list{display:flex;flex-direction:column;gap:.85rem}
+  .exp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.5rem;transition:all .3s;position:relative;overflow:hidden;box-shadow:var(--shadow-sm)}
+  .exp-card::before{content:'';position:absolute;top:0;left:0;bottom:0;width:3px;background:var(--accent);border-radius:0 2px 2px 0;opacity:0;transition:opacity .3s}
+  .exp-card:hover{border-color:var(--accent-border);box-shadow:var(--shadow-md)}.exp-card:hover::before{opacity:1}
+  .exp-top{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:.55rem;flex-wrap:wrap;gap:.4rem}
+  .exp-role{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;letter-spacing:-.01em}
+  .exp-company{font-size:.85rem;color:var(--accent);font-weight:500;margin-top:.1rem}
+  .exp-date{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--text-subtle);background:var(--bg-alt);padding:.2rem .65rem;border-radius:5px;border:1px solid var(--border)}
+  .exp-highlights{list-style:none;display:flex;flex-direction:column;gap:.28rem;margin-top:.4rem}
+  .exp-highlights li{font-size:.85rem;color:var(--text-muted);padding-left:1rem;position:relative;line-height:1.6}
+  .exp-highlights li::before{content:'';position:absolute;left:0;top:9px;width:5px;height:5px;border-radius:50%;background:var(--accent);opacity:.4}
+  .exp-highlights li strong{color:var(--text);font-weight:600}
+  .exp-tags{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.7rem;padding-top:.6rem;border-top:1px solid var(--border)}
+
+  /* ---- TAGS ---- */
+  .skill-tag{display:inline-flex;align-items:center;gap:.3rem;font-family:'DM Mono',monospace;font-size:.68rem;font-weight:500;color:var(--text-muted);background:var(--bg-alt);padding:.25rem .55rem;border-radius:5px;border:1px solid var(--border);transition:all .2s;cursor:default}
+  .skill-tag:hover{color:var(--accent);border-color:var(--accent-border);background:var(--accent-bg)}
+
+  /* ---- COMPETENCIES GRID ---- */
+  .competencies-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(270px,1fr));gap:.75rem}
+  .comp-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.1rem;transition:all .3s;box-shadow:var(--shadow-sm)}
+  .comp-card:hover{border-color:var(--accent-border);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .comp-head{display:flex;align-items:center;gap:.55rem;margin-bottom:.75rem}
+  .comp-icon{width:32px;height:32px;border-radius:8px;background:var(--accent-bg);border:1px solid var(--accent-border);display:flex;align-items:center;justify-content:center;font-size:.9rem}
+  .comp-card h3{font-family:'Cormorant Garamond',serif;font-size:1.05rem;font-weight:500}
+  .comp-tags{display:flex;flex-wrap:wrap;gap:.3rem}
+
+  /* ---- EDUCATION ---- */
+  .edu-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.75rem}
+  .edu-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:all .25s;box-shadow:var(--shadow-sm)}
+  .edu-card:hover{border-color:var(--accent-border);transform:translateY(-2px)}
+  .edu-year{font-family:'DM Mono',monospace;font-size:.7rem;color:var(--accent);margin-bottom:.35rem}
+  .edu-card h3{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:500;margin-bottom:.12rem;line-height:1.35}
+  .edu-card p{font-size:.8rem;color:var(--text-muted)}
+  .edu-grade{color:var(--accent);font-weight:600;font-size:.66rem;text-transform:uppercase;letter-spacing:.05em;display:block;margin-top:.45rem}
+  .edu-mod{margin-top:.45rem;font-size:.72rem;color:var(--text-subtle);line-height:1.55}
+  .edu-mod .lbl{color:var(--accent);font-weight:600;font-size:.62rem;text-transform:uppercase;letter-spacing:.05em}
+  .cert-row{margin-top:.55rem;padding-top:.45rem;border-top:1px solid var(--border);display:flex;flex-direction:column;gap:.2rem}
+  .cert-item{font-size:.7rem;color:var(--text-subtle);display:flex;align-items:center;gap:.35rem}
+  .cert-dot{width:4px;height:4px;border-radius:50%;background:var(--accent);opacity:.5;flex-shrink:0}
+
+  /* ---- RECOMMENDATIONS ---- */
+  .reco-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+  .reco-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all .3s;box-shadow:var(--shadow-sm);position:relative}
+  .reco-card:hover{border-color:var(--gold-border);box-shadow:var(--shadow-md)}
+  .reco-card::before{content:'\201C';font-family:'Cormorant Garamond',serif;font-size:4rem;line-height:1;color:var(--accent);opacity:.15;position:absolute;top:.5rem;left:1.1rem;pointer-events:none}
+  .reco-text{font-size:.85rem;color:var(--text-muted);line-height:1.65;font-style:italic;margin-bottom:.85rem}
+  .reco-author{display:flex;flex-direction:column;gap:.1rem}
+  .reco-name{font-weight:600;font-size:.88rem;color:var(--text)}
+  .reco-role{font-size:.75rem;color:var(--text-subtle)}
+  .reco-rel{display:inline-flex;margin-top:.3rem;font-family:'DM Mono',monospace;font-size:.65rem;color:var(--accent);background:var(--accent-bg);border:1px solid var(--accent-border);padding:.12rem .5rem;border-radius:4px}
+
+  /* ---- PROJECTS ---- */
+  .project-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.4rem;transition:all .3s;box-shadow:var(--shadow-sm)}
+  .project-card:hover{border-color:var(--accent-border);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .project-label{font-size:.7rem;font-weight:600;color:var(--accent);text-transform:uppercase;letter-spacing:.07em;margin-bottom:.35rem}
+  .project-card h3{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;margin-bottom:.35rem}
+  .project-desc{font-size:.85rem;color:var(--text-muted);line-height:1.65;margin-bottom:.6rem}
+  .projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:.85rem}
+
+  /* ---- CONTACT ---- */
+  .contact-section{text-align:center;padding:5rem 0}
+  .contact-section .section-eyebrow,.contact-section .section-title{text-align:center}
+  .contact-desc{text-align:center;color:var(--text-muted);font-size:.94rem;max-width:460px;margin:0 auto 1.5rem}
+  .contact-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:.5rem;margin-bottom:1.8rem}
+  .contact-chip{display:inline-flex;align-items:center;gap:.45rem;padding:.5rem 1.1rem;background:var(--bg-card);border:1px solid var(--border);border-radius:9px;font-size:.83rem;font-weight:500;color:var(--text);text-decoration:none;transition:all .25s;box-shadow:var(--shadow-sm)}
+  .contact-chip:hover{border-color:var(--accent-border);color:var(--accent);transform:translateY(-2px);box-shadow:var(--shadow-md)}
+  .contact-chip svg{width:14px;height:14px;stroke:var(--accent)}
+  .contact-email-big{font-family:'Cormorant Garamond',serif;font-size:clamp(1.2rem,2.5vw,1.7rem);color:var(--accent);text-decoration:none;font-weight:500;border-bottom:2px solid var(--accent-border);padding-bottom:3px;transition:border-color .3s;letter-spacing:-.01em}
+  .contact-email-big:hover{border-color:var(--accent)}
+
+  /* ---- PHILOSOPHY ---- */
+  .philosophy-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:.7rem}
+  .philosophy-card{background:var(--bg-card);border:1px solid var(--border);border-radius:10px;padding:1.2rem;transition:all .3s;box-shadow:var(--shadow-sm)}
+  .philosophy-card:hover{border-color:var(--accent-border);transform:translateY(-2px)}
+  .philosophy-card .p-icon{font-size:1.3rem;margin-bottom:.45rem}
+  .philosophy-card h4{font-family:'Cormorant Garamond',serif;font-size:1rem;font-weight:500;margin-bottom:.2rem}
+  .philosophy-card p{font-size:.78rem;color:var(--text-muted);line-height:1.55}
+
+  /* ---- DIVIDER ---- */
+  .bonus-divider{text-align:center;padding:2.5rem 0 .5rem;color:var(--text-subtle);font-family:'DM Mono',monospace;font-size:.68rem;letter-spacing:.12em;text-transform:uppercase}
+  .bonus-divider::before,.bonus-divider::after{content:'';display:inline-block;width:48px;height:1px;background:var(--border);vertical-align:middle;margin:0 .9rem}
+
+  footer{padding:1.5rem;text-align:center;border-top:1px solid var(--border);font-size:.75rem;color:var(--text-subtle)}
+
+  @keyframes fadeUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+  .reveal{opacity:0;transform:translateY(18px);transition:all .6s cubic-bezier(.16,1,.3,1)}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+  .reveal-stagger>*{opacity:0;transform:translateY(12px);transition:all .5s cubic-bezier(.16,1,.3,1)}
+  .reveal-stagger.visible>*:nth-child(1){transition-delay:.04s;opacity:1;transform:none}
+  .reveal-stagger.visible>*:nth-child(2){transition-delay:.08s;opacity:1;transform:none}
+  .reveal-stagger.visible>*:nth-child(3){transition-delay:.12s;opacity:1;transform:none}
+  .reveal-stagger.visible>*:nth-child(4){transition-delay:.16s;opacity:1;transform:none}
+  .reveal-stagger.visible>*:nth-child(5){transition-delay:.2s;opacity:1;transform:none}
+  .reveal-stagger.visible>*:nth-child(6){transition-delay:.24s;opacity:1;transform:none}
+
+  @media(max-width:768px){
+    .container{padding:0 1.2rem}.nav-links{display:none}.nav-toggle{display:block}
+    .hero{padding:7rem 0 2.5rem}.hero-layout{grid-template-columns:1fr}
+    .stats-bar{grid-template-columns:1fr 1fr}
+    .edu-grid,.philosophy-cards,.reco-grid,.projects-grid{grid-template-columns:1fr}
+    .competencies-grid{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav><div class="nav-inner">
+  <a href="#" class="nav-logo">Manali Navlakha<span>.</span></a>
+  <ul class="nav-links">
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#competencies">Skills</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#recommendations">Recommendations</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <button class="nav-toggle" onclick="document.querySelector('.nav-links').style.display=document.querySelector('.nav-links').style.display==='flex'?'none':'flex'" aria-label="Menu">☰</button>
+</div></nav>
+
+<!-- ══════════ HERO ══════════ -->
+<div class="hero"><div class="container">
+  <div class="hero-eyebrow"><span class="dot"></span> Open to Opportunities</div>
+  <h1>Finance professional<br>turning numbers into<br><em>strategic clarity</em></h1>
+  <p class="hero-desc">
+    3+ years supporting SMEs with FP&A, budgeting, forecasting, and Virtual CFO services.
+    I help leadership teams improve financial visibility, understand performance vs plan,
+    and make smarter decisions — with data, not instinct.
+  </p>
+  <p class="hero-seeking">→ Seeking Financial Analyst / FP&A / Reporting roles in the United Kingdom</p>
+  <div class="hero-actions">
+    <a href="#contact" class="btn btn-primary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Get in Touch</a>
+    <a href="https://www.linkedin.com/in/manali-nandkumar-navlakha/" target="_blank" class="btn btn-secondary"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+  </div>
+  <div class="stats-bar">
+    <div class="stat-card"><div class="number">3+</div><div class="label">Years in Finance</div></div>
+    <div class="stat-card"><div class="number">MSc</div><div class="label">Finance — Exeter</div></div>
+    <div class="stat-card"><div class="number">vCFO</div><div class="label">Multi-Client SME</div></div>
+    <div class="stat-card"><div class="number">UK</div><div class="label">Based — Open to Work</div></div>
+  </div>
+</div></div>
+
+<!-- ══════════ EXPERIENCE ══════════ -->
+<section id="experience" class="section-alt"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">Experience</div><h2 class="section-title">Where I've made <em>impact</em></h2></div>
+  <div class="exp-list">
+
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div>
+          <div class="exp-role">Senior Executive — Virtual CFO Service</div>
+          <div class="exp-company">R Senapati & Associates LLP</div>
+        </div>
+        <span class="exp-date">Sep 2022 – Aug 2024 · 2 yrs</span>
+      </div>
+      <ul class="exp-highlights">
+        <li>Delivered <strong>budgeting & forecasting</strong> for SME clients with turnovers up to ₹50Cr, improving cash flow visibility and spend planning</li>
+        <li>Built monthly <strong>management reports</strong> (Revenue, Margin, Opex, Working Capital) for leadership review</li>
+        <li>Performed <strong>variance analysis</strong> vs Budget / LY / Actuals to surface performance gaps and corrective actions</li>
+        <li>Prepared <strong>financial statements & audit schedules</strong>, reducing audit queries and close delays</li>
+        <li>Coordinated compliance across <strong>GST, TDS, PF & ESIC</strong> with high accuracy and minimal penalty exposure</li>
+        <li>Liaised directly with <strong>founders & finance teams</strong> to align operational decisions with financial goals</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="skill-tag">FP&A</span><span class="skill-tag">Budgeting & Forecasting</span><span class="skill-tag">Variance Analysis</span><span class="skill-tag">Management Reporting</span><span class="skill-tag">GST / TDS</span><span class="skill-tag">Excel</span><span class="skill-tag">Tally ERP</span>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div>
+          <div class="exp-role">Accountant</div>
+          <div class="exp-company">RNS Accounting Solution LLP</div>
+        </div>
+        <span class="exp-date">Sep 2021 – Aug 2022 · 1 yr</span>
+      </div>
+      <ul class="exp-highlights">
+        <li>Managed <strong>month-end close</strong>, reconciliations, AP/AR, and compliance filings for multiple SME clients</li>
+        <li>Prepared <strong>P&L, Balance Sheet & Cash Flow Statements</strong> for audit and banking requirements</li>
+        <li>Filed <strong>GST / TDS / PF / ESIC</strong> returns accurately and on time, reducing compliance risk</li>
+        <li>Improved collections through <strong>structured AR tracking</strong> and follow-up cycles</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="skill-tag">Month-End Close</span><span class="skill-tag">AP / AR</span><span class="skill-tag">Financial Statements</span><span class="skill-tag">Reconciliation</span><span class="skill-tag">GST</span><span class="skill-tag">TDS</span><span class="skill-tag">Zoho Books</span>
+      </div>
+    </div>
+
+    <div class="exp-card reveal">
+      <div class="exp-top">
+        <div>
+          <div class="exp-role">Department Officer</div>
+          <div class="exp-company">Exeter Students' Guild</div>
+        </div>
+        <span class="exp-date">Oct 2024 – Jul 2025 · 10 mos</span>
+      </div>
+      <ul class="exp-highlights">
+        <li>Consolidated student feedback and presented structured proposals to faculty and Guild leadership</li>
+        <li>Improved communication channels between student representatives and module leaders</li>
+        <li>Organised events and community engagement initiatives for the academic rep team</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="skill-tag">Stakeholder Communication</span><span class="skill-tag">Leadership</span><span class="skill-tag">Event Planning</span>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══════════ CORE COMPETENCIES ══════════ -->
+<section id="competencies"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">Technical Skills</div><h2 class="section-title">Core competencies at a <em>glance</em></h2></div>
+  <div class="competencies-grid reveal-stagger reveal">
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">📊</div><h3>FP&A & Reporting</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">FP&A</span><span class="skill-tag">Budgeting & Forecasting</span><span class="skill-tag">Variance Analysis</span><span class="skill-tag">Management Reporting</span><span class="skill-tag">Rolling Forecasts</span>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">🏢</div><h3>Accounting & Close</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">Month-End Close</span><span class="skill-tag">Financial Statements</span><span class="skill-tag">Audit Schedules</span><span class="skill-tag">Reconciliation</span><span class="skill-tag">AP / AR</span><span class="skill-tag">Year-End Accounting</span>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">⚖️</div><h3>Compliance</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">GST</span><span class="skill-tag">TDS</span><span class="skill-tag">PF</span><span class="skill-tag">ESIC</span><span class="skill-tag">Taxation</span>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">🛠️</div><h3>Tools & Technology</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">Excel (Advanced)</span><span class="skill-tag">Power BI</span><span class="skill-tag">Tally ERP</span><span class="skill-tag">Zoho Books</span><span class="skill-tag">Financial Modelling</span>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">📈</div><h3>Analysis & Strategy</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">Fundamental Analysis</span><span class="skill-tag">Business Analysis</span><span class="skill-tag">Strategic Planning</span><span class="skill-tag">Business Planning</span><span class="skill-tag">Financial Modelling</span>
+      </div>
+    </div>
+
+    <div class="comp-card">
+      <div class="comp-head"><div class="comp-icon">🤝</div><h3>Soft Skills</h3></div>
+      <div class="comp-tags">
+        <span class="skill-tag">Stakeholder Management</span><span class="skill-tag">Problem Solving</span><span class="skill-tag">Research</span><span class="skill-tag">Teamwork</span><span class="skill-tag">Adaptability</span>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══════════ PROJECTS ══════════ -->
+<section id="projects" class="section-alt"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">Projects</div><h2 class="section-title">Things I've <em>built</em></h2></div>
+  <div class="projects-grid reveal-stagger reveal">
+
+    <div class="project-card">
+      <div class="project-label">Social Enterprise · University of Exeter</div>
+      <h3>Project Shakti — Women's Income Generation</h3>
+      <p class="project-desc">
+        Part of <strong>Enactus Exeter</strong>, Project Shakti is an income generation programme supporting women artisans in Gujarat, India. Participating women create upcycled greeting cards from scrap material, building financial independence through sustainable enterprise.
+      </p>
+      <ul class="exp-highlights" style="margin:.2rem 0 .8rem">
+        <li>Contributed <strong>financial analysis</strong> and planning support for the project's social business model</li>
+        <li>Applied <strong>problem-solving & teamwork</strong> across a cross-functional international team</li>
+        <li>Developed skills in <strong>impact measurement</strong> and sustainability reporting</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="skill-tag">Financial Analysis</span><span class="skill-tag">Social Enterprise</span><span class="skill-tag">Sustainability</span><span class="skill-tag">Teamwork</span>
+      </div>
+    </div>
+
+    <div class="project-card">
+      <div class="project-label">Virtual CFO · Multi-Client</div>
+      <h3>SME Financial Visibility Framework</h3>
+      <p class="project-desc">
+        Designed and delivered a repeatable financial reporting framework for multiple SME clients across sectors, transforming raw accounting data into actionable management information.
+      </p>
+      <ul class="exp-highlights" style="margin:.2rem 0 .8rem">
+        <li>Built <strong>rolling forecast models</strong> reducing cash flow surprises for founder-led businesses</li>
+        <li>Standardised <strong>monthly reporting packs</strong> covering Revenue, Margin, Opex, and Working Capital</li>
+        <li>Created compliance calendars covering <strong>GST, TDS, PF & ESIC</strong> deadlines across clients</li>
+        <li>Reduced audit preparation time through <strong>structured trial balance reconciliation</strong> processes</li>
+      </ul>
+      <div class="exp-tags">
+        <span class="skill-tag">FP&A</span><span class="skill-tag">Financial Modelling</span><span class="skill-tag">Excel</span><span class="skill-tag">Tally ERP</span><span class="skill-tag">Management Reporting</span>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══════════ EDUCATION ══════════ -->
+<section id="education"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">Education & Credentials</div><h2 class="section-title">Academic <em>foundation</em></h2></div>
+  <div class="edu-grid reveal-stagger reveal">
+
+    <div class="edu-card">
+      <div class="edu-year">2024 – 2025</div>
+      <h3>MSc Finance and Investment</h3>
+      <p>University of Exeter Business School</p>
+      <div class="edu-mod">
+        <span class="lbl">Focus Areas</span><br>
+        Financial Analysis · Investment · Corporate Finance · Sustainability Finance
+      </div>
+      <div class="cert-row">
+        <div class="cert-item"><span class="cert-dot"></span>Green Consultants Programme — University of Exeter (Feb 2025)</div>
+        <div class="cert-item"><span class="cert-dot"></span>Your Future First Certification (Feb 2025)</div>
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-year">2019 – 2022</div>
+      <h3>BBA — Accounting & Finance</h3>
+      <p>Savitribai Phule Pune University</p>
+      <div class="edu-mod">
+        <span class="lbl">Focus Areas</span><br>
+        Financial Accounting · Corporate Finance · Taxation · Business Law
+      </div>
+    </div>
+
+    <div class="edu-card">
+      <div class="edu-year">Feb 2025</div>
+      <h3>Green Consultants Training</h3>
+      <p>University of Exeter</p>
+      <span class="edu-grade">Certified</span>
+      <div class="edu-mod">
+        <span class="lbl">Covered</span><br>
+        Sustainability consulting · ISO 14001 · BREEAM · BCorps · Excel for sustainability · Project auditing
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══════════ RECOMMENDATIONS ══════════ -->
+<section id="recommendations" class="section-alt"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">Recommendations</div><h2 class="section-title">What colleagues <em>say</em></h2></div>
+  <div class="reco-grid reveal-stagger reveal">
+
+    <div class="reco-card">
+      <p class="reco-text">
+        "Manali brings a unique blend of technical accounting expertise and strategic financial thinking. She doesn't just manage numbers — she translates them into insights that guide better business decisions. Few professionals combine reliability, integrity, and financial acumen as effortlessly as Manali. She's truly an asset to any team."
+      </p>
+      <div class="reco-author">
+        <span class="reco-name">Aditi Kochatta</span>
+        <span class="reco-role">CA | CS | Dip. in IFRS (ACCA)</span>
+        <span class="reco-rel">Direct Manager</span>
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <p class="reco-text">
+        "Manali's multitasking ability is truly remarkable — whether managing multiple client accounts or handling complex projects simultaneously, she always stays on top of everything. Her work ethic and determination to deliver results make her a standout team member. She's someone you can always rely on."
+      </p>
+      <div class="reco-author">
+        <span class="reco-name">Rishabh Tandon</span>
+        <span class="reco-role">CA | CISA | Internal Audit & Risk Management</span>
+        <span class="reco-rel">Collaborator</span>
+      </div>
+    </div>
+
+    <div class="reco-card">
+      <p class="reco-text">
+        "Manali has completed the Green Consultants training with a deep commitment to sustainability. She has audited her professional skills, improved Excel capabilities, and developed a strong awareness of BREEAM, ISO 14001, and BCorps standards. She is ready to use her skills to tackle sustainability challenges effectively."
+      </p>
+      <div class="reco-author">
+        <span class="reco-name">Helen Hicks</span>
+        <span class="reco-role">Sustainability Careers Specialist — University of Exeter</span>
+        <span class="reco-rel">Programme Tutor</span>
+      </div>
+    </div>
+
+  </div>
+</div></section>
+
+<!-- ══════════ CONTACT ══════════ -->
+<section id="contact" class="contact-section"><div class="container"><div class="reveal">
+  <div class="section-eyebrow">Contact</div>
+  <h2 class="section-title">Let's work <em>together</em></h2>
+  <p class="contact-desc">Available for Financial Analyst / FP&A / Reporting roles in the UK. Open to hybrid and remote opportunities across Europe.</p>
+  <div class="contact-grid">
+    <a class="contact-chip" href="https://www.linkedin.com/in/manali-nandkumar-navlakha/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-4 0v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>LinkedIn</a>
+    <a class="contact-chip" href="mailto:manalinavlakha2807@gmail.com"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>Email</a>
+    <a class="contact-chip" href="tel:+447404833432"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.13 11.9a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.06 1h3a2 2 0 0 1 2 1.72c.13.81.36 1.6.7 2.35a2 2 0 0 1-.45 2.11L7.09 8.41a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.74.33 1.54.57 2.35.69A2 2 0 0 1 21 15.5v1.42z"/></svg>+44 7404 833432</a>
+  </div>
+  <a href="mailto:manalinavlakha2807@gmail.com" class="contact-email-big">manalinavlakha2807@gmail.com</a>
+</div></div></section>
+
+<!-- ══════════ PHILOSOPHY ══════════ -->
+<div class="bonus-divider">Finance philosophy</div>
+<section id="philosophy"><div class="container">
+  <div class="reveal"><div class="section-eyebrow">How I think about Finance</div><h2 class="section-title">Numbers should <em>tell stories</em></h2></div>
+  <div class="philosophy-cards reveal-stagger reveal">
+    <div class="philosophy-card">
+      <div class="p-icon">📐</div>
+      <h4>Rigour over speed</h4>
+      <p>Accurate data is the foundation of every decision. I prioritise clean numbers over fast ones — a wrong forecast costs more than a late one.</p>
+    </div>
+    <div class="philosophy-card">
+      <div class="p-icon">🔍</div>
+      <h4>Variance as a signal</h4>
+      <p>A gap between actual and budget isn't a failure — it's a question. I dig into variances to find the real operational story behind the numbers.</p>
+    </div>
+    <div class="philosophy-card">
+      <div class="p-icon">🤝</div>
+      <h4>Finance as a partner</h4>
+      <p>Finance teams that sit in back offices miss the point. The most valuable work happens when finance sits alongside operations and leadership.</p>
+    </div>
+  </div>
+</div></section>
+
+<footer>© 2025 Manali Navlakha · Exeter, United Kingdom</footer>
+
+<script>
+const observer=new IntersectionObserver(e=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')})},{threshold:.08,rootMargin:'0px 0px -30px 0px'});
+document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
+let lastY=0;const nav=document.querySelector('nav');
+window.addEventListener('scroll',()=>{const y=window.scrollY;nav.style.transform=y>lastY&&y>80?'translateY(-100%)':'translateY(0)';lastY=y});
+</script>
+</body>
+</html>
